@@ -1,34 +1,65 @@
-import { Image, StyleSheet, Platform, View,Text } from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+} from "react-native";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { Colors } from '@/constants/Colors';
+import { Colors } from "@/constants/Colors";
+import Header from "@/components/ui/custom/header";
+import SearchBar from "@/components/ui/custom/SearchBar";
+import HomeCover from "@/components/ui/custom/HomeCover";
+import CustomList from "@/components/ui/custom/customList";
+import { ScrollView } from "react-native-virtualized-view";
+import FollowCard from "@/components/ui/custom/cards/FollowCard";
+import FollowList from "@/components/ui/custom/FollowList";
+import CityCards from "@/components/ui/custom/cards/CityCards";
+import CityList from "@/components/ui/custom/CityList";
 
 export default function HomeScreen() {
   return (
-    <View style={{flex:1,backgroundColor:Colors.bg.primary}}>
-      
-    </View>
+    <SafeAreaView>
+      <ScrollView style={{backgroundColor:Colors.bg.primary}}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: Colors.bg.primary,
+            width: "100%",
+            height:"100%",
+            alignItems: "center",
+          }}
+        >
+          <Header />
+          <SearchBar />
+          <HomeCover />
+        </View>
+
+
+        
+          <CustomList
+            heading="You Might Like these"
+            subHeading="More places around You"
+          />
+          <CustomList
+            heading="You Might Like these"
+            subHeading="More places around You"
+          />
+
+          <FollowList 
+            heading="Follow Best Travellers"
+            subHeading="Find inpiration from them "
+             />
+
+        <CustomList
+            heading="You Might Like these"
+            subHeading="More places around You"
+          />
+
+        <CityList 
+           heading="You Might Like these"
+           subHeading="More places around You"
+        />
+
+      </ScrollView>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
