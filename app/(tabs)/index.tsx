@@ -14,6 +14,9 @@ import FollowCard from "@/components/ui/custom/cards/FollowCard";
 import FollowList from "@/components/ui/custom/FollowList";
 import CityCards from "@/components/ui/custom/cards/CityCards";
 import CityList from "@/components/ui/custom/CityList";
+import Banner from "@/components/ui/custom/Banner";
+import NewsCard from "@/components/ui/custom/cards/NewsCard";
+import NewsList from "@/components/ui/custom/lists/NewsList";
 
 export default function HomeScreen() {
   return (
@@ -30,7 +33,8 @@ export default function HomeScreen() {
         >
           <Header />
           <SearchBar />
-          <HomeCover />
+
+          <Banner />
         </View>
 
 
@@ -58,6 +62,11 @@ export default function HomeScreen() {
            heading="You Might Like these"
            subHeading="More places around You"
         />
+
+
+      <NewsList  heading="What's Latest News and Updates from Tripers" subHeading="Find the info you need" />
+
+      <HomeCover title="Discover more in Sri lanka" iconName="caretright" iconRequired={true}  />
 
       </ScrollView>
     </SafeAreaView>

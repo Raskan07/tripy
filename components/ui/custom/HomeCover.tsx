@@ -1,20 +1,31 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View,ImageBackground, ViewProps } from 'react-native'
 import React from 'react'
 import { Colors } from '@/constants/Colors'
 import AntDesign from '@expo/vector-icons/AntDesign';
+import ButtonAI from './buttons/ButtonAI';
 
-const HomeCover = () => {
+
+type Props = {
+  title : string,
+  onPress?:()=>void,
+  iconName?: string,
+  buttonTitle?:string,
+  iconRequired?: boolean,
+  containerStyle?:ViewProps['style'],
+  buttonRequired?:boolean
+
+}
+
+const HomeCover = ({title,onPress,iconName,buttonTitle,iconRequired,containerStyle,buttonRequired=true}:Props) => {
   return (
-    <View style={{width:"100%",alignItems:"center",justifyContent:"center",marginTop:20}}>
-      <View style={{width:"90%",backgroundColor:Colors.bg.secondary,borderRadius:25,padding:10,paddingTop:30,paddingBottom:30,alignItems:"center",justifyContent:"center"}}>
+    <View style={[containerStyle,{width:"100%",alignItems:"center",justifyContent:"center",marginTop:20,marginBottom:20}]}>
+      <View style={{width:"90%",backgroundColor:Colors.bg.secondary,borderRadius:25,padding:10,paddingTop:30,paddingBottom:30,alignItems:"center",justifyContent:"center",borderWidth:1,borderColor:"#FFF"}}>
         <Text style={{fontFamily:"anton",fontSize:25,color:Colors.text.primary,textAlign:"center"}}>
-            Expereinec AI Power Trip
+            {title}
         </Text>
 
-        <TouchableOpacity style={{padding:8,backgroundColor:"#FFF",borderRadius:100,marginTop:15,flexDirection:"row",alignItems:"center",justifyContent:"center",gap:5,paddingVertical:10}}>
-            <AntDesign name="dingding" size={24} color="gold" />
-            <Text style={{fontFamily:"roboto",fontSize:16,color:Colors.bg.primary,textAlign:"center",fontWeight:"400"}}>Start a Trip with AI</Text>
-        </TouchableOpacity>
+        {/* @ts-ignore */}
+        {buttonRequired &&<ButtonAI  title={buttonTitle} iconName={iconRequired&&iconName}/>}
       </View>
     </View>
   )
